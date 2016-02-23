@@ -9,7 +9,8 @@ enabled_site_setting :anonymous_categories_enabled
 after_initialize do
 
   @anon_handler = lambda do |manager|
-    if SiteSetting.anonymous_categories.include?(manager.args[:category])
+    if SiteSetting.anonymous_categories_enabled &&
+      SiteSetting.anonymous_categories.include?(manager.args[:category])
       user = manager.user
       args = manager.args
 

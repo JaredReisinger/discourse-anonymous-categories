@@ -3,4 +3,4 @@ en:
     queue_reason:
       anonymous_category_post:
         title: "Post created as an anonymous user."
-        description: "This category is set to anonymize all posts."
+        description: "This category is set to anonymize all posts. You may need to refresh to see the post you just made."
