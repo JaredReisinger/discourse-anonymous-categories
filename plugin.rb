@@ -9,10 +9,20 @@ enabled_site_setting :anonymous_categories_enabled
 after_initialize do
 
   @anon_handler = lambda do |manager|
+    # Rails.logger.info "*** anon_handler ***"
+    args = manager.args
+    category = manager.args[:category]
+    # Note that an uncategorized topic post comes through as an empty category
+    # rather than category "1".  We need to special case this for now...
+    category = SiteSetting.uncategorized_category_id.to_s if category.blank?
+
+    # Rails.logger.info "*** enabled: #{SiteSetting.anonymous_categories_enabled}"
     if SiteSetting.anonymous_categories_enabled &&
-      SiteSetting.anonymous_categories.include?(manager.args[:category])
+      SiteSetting.anonymous_categories.include?(category)
+      # Rails.logger.info "*** args: #{manager.args}"
+      # Rails.logger.info "*** list: \"#{SiteSetting.anonymous_categories}\""
+      # Rails.logger.info "*** category: \"#{category}\" (#{category.class})"
       user = manager.user
-      args = manager.args
 
       # Jump around the global anonymous setting for this post...
       shadow = nil
