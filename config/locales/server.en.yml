@@ -1,0 +1,4 @@
+en:
+  site_settings:
+    anonymous_categories_enabled: "Enable the magic anonymous behavior"
+    anonymous_categories: "Categories that allow anonymous posting"

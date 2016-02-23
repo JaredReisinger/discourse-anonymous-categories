@@ -1,0 +1,6 @@
+en:
+  js:
+    queue_reason:
+      anonymous_category_post:
+        title: "Post created as an anonymous user."
+        description: "This category is set to anonymize all posts."
