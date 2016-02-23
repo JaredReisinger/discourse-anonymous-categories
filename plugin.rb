@@ -2,7 +2,7 @@
 # about: Always-anonymous categories for Discourse
 # version: 0.0.1
 # authors: Jared Reisinger
-# url: https://githiub.com/JaredReisinger/discourse-anonymous-categories
+# url: https://github.com/JaredReisinger/discourse-anonymous-categories
 
 enabled_site_setting :anonymous_categories_enabled
 
