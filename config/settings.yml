@@ -2,7 +2,3 @@ plugins:
   anonymous_categories_enabled:
     default: false
     client: true
-  anonymous_categories:
-    type: category_list
-    default: ""
-    client: true

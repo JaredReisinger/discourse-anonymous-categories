@@ -1,0 +1,10 @@
+{{#if siteSettings.anonymous_categories_enabled}}
+  <section class='field'>
+    <div class="anonymous-categories">
+      <label class="checkbox-label">
+        {{input type="checkbox" checked=category.force_anonymous_posting}}
+        {{i18n 'anonymous_categories.force_anonymous_posting'}}
+      </label>
+    </div>
+  </section>
+{{/if}}

@@ -1,6 +1,8 @@
 en:
   js:
+    anonymous_categories:
+      force_anonymous_posting: "Force posts to be anonymous in this category"
     queue_reason:
-      anonymous_category_post:
+      force_anonymous_post:
         title: "Post created as an anonymous user."
-        description: "This category is set to anonymize all posts. You may need to refresh to see the post you just made."
+        description: "This category requires all posts to be anonymized. You may need to refresh to see the post you just made."
