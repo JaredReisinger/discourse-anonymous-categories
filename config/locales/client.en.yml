@@ -2,6 +2,8 @@ en:
   js:
     anonymous_categories:
       force_anonymous_posting: "Force posts to be anonymous in this category"
+      force_anonymous_disabled: "Forcing posts to be anonymous is disabled in the Site Settings. To enable forcing anonymous posts, "
+      force_anonymous_disabled_click: 'enable the "anonymous categories enabled" setting.'
     queue_reason:
       force_anonymous_post:
         title: "Post created as an anonymous user."

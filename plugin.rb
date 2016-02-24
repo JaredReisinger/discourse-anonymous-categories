@@ -9,6 +9,13 @@ enabled_site_setting :anonymous_categories_enabled
 after_initialize do
 
   require_dependency 'category'
+  require_dependency 'guardian'
+  require_dependency 'site_setting'
+  require_dependency 'user'
+  require_dependency 'anonymous_shadow_creator'
+  require_dependency 'new_post_result'
+  require_dependency 'post_creator'
+
   class ::Category
       after_save :reset_anonymous_categories_cache
 
@@ -18,7 +25,6 @@ after_initialize do
       end
   end
 
-  require_dependency 'guardian'
   class ::Guardian
     @@anonymous_categories_cache = DistributedCache.new("anonymous_categories")
 
@@ -39,23 +45,24 @@ after_initialize do
       return nil
     end
 
+    user = manager.user
+    args = manager.args
+
     # Note that an uncategorized topic post comes through as an empty category
     # rather than category "1".  We need to special case this for now...
-    category_id = manager.args[:category]
+    category_id = args[:category]
     category_id = SiteSetting.uncategorized_category_id.to_s if category_id.blank?
 
     # Have to figure out what category the post is in to see if it needs to be
     # anonymized.
-    Rails.logger.info "*** anon: looking for category: \"#{category_id}\""
     category = Category.find(category_id)
 
-    if !category.custom_fields["force_anonymous_posting"]
+    if category.custom_fields["force_anonymous_posting"] != "true"
       return nil
     end
 
     # Bypass the global anonymous setting for this post/category in order to
     # force it.
-    user = manager.user
     shadow = nil
     if (shadow_id = user.custom_fields["shadow_id"].to_i) > 0
       shadow = User.find_by(id: shadow_id)

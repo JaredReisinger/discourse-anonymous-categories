@@ -8,9 +8,12 @@ Discourse's anonymous posting functionality is great, but it's a global setting:
 
 ## How does it work?
 
-The discourse-anonymous-categories plugin adds an admin configuration setting (`anonymous_categories`) that lets you specify exactly which categories should be treated as "always anonymous".  Posts to these categories—both new topics and replies—will automatically be performed as a user's anonymous pseudonym, regardless of the global anonymous-posting setting.
+The discourse-anonymous-categories plugin adds a configuration setting for each category to **force** posts to be made anonymously.  _**All**_ posts to these categories—both new topics and replies—will automatically be performed as a user's anonymous pseudonym, regardless of the global anonymous-posting setting.
 
+## Known Issues
 
-## TO-DO
+If the category could not normally be posted in by an anonymous user, turning on the "force anonymous posting" setting will result in many unhappy users.  No attempt is made to detect whether an anonymous user (typically at trust level 1) will be able to post successfully; it simply fails with a "You are not permitted to view the requested resource" alert.
 
-* "like" as anonymous user, or mask likes if done as normal user
+In order to trick the UI, the post is treated as a "queued" post.  Otherwise, the Discourse front-end doesn't see the anonymous post as the same as the one from the user, and thus doesn't clear out the post editor.  By returning a "this post is queued" result, the editor behaves a bit better.  Yes, this can be somewhat surprising.  On the other hand, it gives us a chance to inform the user that the post was made anonymously, which they might not otherwise expect.
+
+"Liking" still isn't anonymous, so if you may want to look at the [discourse-feature-voting](https://www.github.com/joebuhlig/discourse-feature-voting) plugin as a companion to this one.

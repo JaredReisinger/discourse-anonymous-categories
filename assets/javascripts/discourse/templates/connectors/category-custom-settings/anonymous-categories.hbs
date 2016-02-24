@@ -8,3 +8,10 @@
     </div>
   </section>
 {{/if}}
+
+{{#unless siteSettings.anonymous_categories_enabled}}
+  <section class='field'>
+    {{i18n 'anonymous_categories.force_anonymous_disabled'}}
+    <a href="/admin/site_settings/category/plugins">{{i18n 'anonymous_categories.force_anonymous_disabled_click'}}</a>
+  </section>
+{{/unless}}
