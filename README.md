@@ -16,4 +16,4 @@ If the category could not normally be posted in by an anonymous user, turning on
 
 In order to trick the UI, the post is treated as a "queued" post.  Otherwise, the Discourse front-end doesn't see the anonymous post as the same as the one from the user, and thus doesn't clear out the post editor.  By returning a "this post is queued" result, the editor behaves a bit better.  Yes, this can be somewhat surprising.  On the other hand, it gives us a chance to inform the user that the post was made anonymously, which they might not otherwise expect.
 
-"Liking" still isn't anonymous, so if you may want to look at the [discourse-feature-voting](https://www.github.com/joebuhlig/discourse-feature-voting) plugin as a companion to this one.
+"Liking" still isn't anonymous, so if you may want to look at the [discourse-feature-voting](https://github.com/joebuhlig/discourse-feature-voting) plugin as a companion to this one.
